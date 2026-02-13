@@ -1,0 +1,227 @@
+/* ─── About Section ─── */
+.about {
+    padding: 8rem 4rem;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.about-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6rem;
+    align-items: center;
+}
+
+/* ─── Animations ─── */
+.about-text-col {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 1s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.about.visible .about-text-col {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.about-heading {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.9rem;
+    letter-spacing: 4px;
+    color: var(--text-light);
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.about-divider {
+    width: 60px;
+    height: 1px;
+    background: var(--text-primary);
+    margin-bottom: 2rem;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 1s ease 0.2s;
+}
+
+.about.visible .about-divider {
+    transform: scaleX(1);
+}
+
+.about-description {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    margin-bottom: 1.5rem;
+    font-weight: 300;
+}
+
+.about-description strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+/* ─── Stats ─── */
+.about-stats {
+    display: flex;
+    gap: 4rem;
+    margin-top: 3rem;
+    border-top: 1px solid var(--border-light);
+    padding-top: 2rem;
+}
+
+.stat {
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-number {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-light);
+}
+
+/* ─── 3D Image Grid ─── */
+.about-images-col {
+    position: relative;
+    perspective: 1000px;
+    /* Enable 3D space */
+}
+
+.about-image-grid-3d {
+    position: relative;
+    width: 100%;
+    height: 600px;
+    transform-style: preserve-3d;
+    transform: rotateY(-5deg) rotateX(2deg);
+    transition: transform 0.5s ease-out;
+}
+
+.about-images-col:hover .about-image-grid-3d {
+    transform: rotateY(0) rotateX(0);
+}
+
+.about-img {
+    position: absolute;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    opacity: 0;
+}
+
+.about.visible .about-img {
+    opacity: 1;
+}
+
+.about-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: grayscale(20%);
+    transition: filter 0.4s ease;
+}
+
+.about-images-col:hover .about-img img {
+    filter: grayscale(0%);
+}
+
+.about-img-large {
+    width: 70%;
+    height: 80%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transform: translateZ(0) translateY(40px);
+}
+
+.about.visible .about-img-large {
+    transform: translateZ(0) translateY(0);
+}
+
+.about-img-small {
+    width: 55%;
+    height: 50%;
+    bottom: 5%;
+    right: 0;
+    z-index: 2;
+    border: 8px solid #ffffff;
+    transform: translateZ(40px) translateY(60px);
+    /* Lifted in 3D space */
+    transition-delay: 0.2s;
+}
+
+.about.visible .about-img-small {
+    transform: translateZ(40px) translateY(0);
+}
+
+.about-decoration {
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 150px;
+    height: 150px;
+    border: 1px solid var(--text-light);
+    z-index: 0;
+    transform: translateZ(-20px);
+    opacity: 0.3;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 1024px) {
+    .about-container {
+        grid-template-columns: 1fr;
+        gap: 4rem;
+    }
+
+    .about-image-grid-3d {
+        height: 500px;
+        transform: none;
+        /* Disable 3D on smaller screens for simplicity */
+    }
+
+    .about-images-col:hover .about-image-grid-3d {
+        transform: none;
+    }
+
+    .about-img-large {
+        width: 80%;
+    }
+
+    .about-img-small {
+        width: 60%;
+        bottom: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .about {
+        padding: 4rem 1.5rem;
+    }
+
+    .about-description {
+        font-size: 1rem;
+    }
+
+    .about-stats {
+        gap: 2rem;
+    }
+
+    .stat-number {
+        font-size: 2rem;
+    }
+
+    .about-image-grid-3d {
+        height: 400px;
+    }
+}

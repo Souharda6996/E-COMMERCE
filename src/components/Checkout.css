@@ -1,0 +1,581 @@
+.checkout-container {
+    padding: 2rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    min-height: 100vh;
+    background: #ffffff;
+    padding-top: 100px;
+    /* Offset for navbar if visible, or standalone */
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.checkout-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.checkout-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.back-link {
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.secure-badge {
+    color: #008000;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.checkout-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+}
+
+/* ─── Forms ─── */
+.checkout-steps {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    color: #999;
+}
+
+.step.active {
+    color: #000;
+    font-weight: 600;
+}
+
+.step.completed {
+    color: #008000;
+}
+
+.form-section {
+    margin-bottom: 2rem;
+}
+
+.form-section h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+}
+
+.checkout-form input {
+    width: 100%;
+    padding: 0.9rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+}
+
+.checkout-form input:focus {
+    border-color: #000;
+    outline: none;
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.checkout-btn-main {
+    width: 100%;
+    padding: 1rem;
+    background: #000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background 0.2s;
+}
+
+.checkout-btn-main:hover {
+    background: #333;
+}
+
+.checkout-btn-main:disabled {
+    background: #999;
+    cursor: not-allowed;
+}
+
+/* ─── Review & Payment ─── */
+.review-block {
+    background: #f9f9f9;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.review-row {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    border-bottom: 1px solid #eee;
+}
+
+.review-row:last-child {
+    border-bottom: none;
+}
+
+.review-row span:nth-child(2) {
+    flex: 1;
+    margin: 0 1rem;
+    color: #333;
+}
+
+.edit-btn {
+    background: none;
+    border: none;
+    color: #000;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.payment-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.payment-option {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ddd;
+    padding: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.payment-option:hover {
+    border-color: #000;
+}
+
+.payment-option input {
+    display: none;
+}
+
+.radio-custom {
+    width: 18px;
+    height: 18px;
+    border: 2px solid #ddd;
+    border-radius: 50%;
+    margin-right: 1rem;
+    position: relative;
+}
+
+.payment-option input:checked+.radio-custom {
+    border-color: #000;
+}
+
+.payment-option input:checked+.radio-custom::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #000;
+    border-radius: 50%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.option-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.option-title {
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.option-desc {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+/* ─── Summary (Right) ─── */
+.checkout-right {
+    background: #fafafa;
+    padding: 2rem;
+    border-radius: 8px;
+    height: fit-content;
+}
+
+.summary-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.summary-img-wrapper {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    border: 1px solid #eee;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.summary-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.summary-qty {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: #666;
+    color: #fff;
+    font-size: 0.7rem;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.summary-info {
+    flex: 1;
+    margin-left: 1rem;
+}
+
+.summary-info h4 {
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.summary-info p {
+    font-size: 0.8rem;
+    color: #666;
+}
+
+.total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.total-row.final {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #ddd;
+    color: #000;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+/* ─── Success & Receipt ─── */
+.checkout-success-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    padding-top: 100px;
+    text-align: center;
+    animation: fadeIn 0.8s ease;
+}
+
+.success-header {
+    margin-bottom: 3rem;
+}
+
+.success-icon-large {
+    width: 80px;
+    height: 80px;
+    background: #000;
+    color: #fff;
+    border-radius: 50%;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5rem;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.success-header h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    color: #000;
+}
+
+.success-header .email-note {
+    color: #666;
+    margin-top: 0.5rem;
+}
+
+/* Receipt Card */
+.order-receipt {
+    background: #fff;
+    border: 1px solid #eee;
+    text-align: left;
+    padding: 2.5rem;
+    border-radius: 2px;
+    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.05);
+    margin-bottom: 3rem;
+    position: relative;
+    /* Paper edge effect */
+    background-image: linear-gradient(135deg, #fff 50%, transparent 50%), linear-gradient(45deg, #fff 50%, transparent 50%);
+    background-size: 20px 20px;
+    background-position: bottom left;
+    background-repeat: repeat-x;
+}
+
+.receipt-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #000;
+    padding-bottom: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.receipt-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.receipt-meta {
+    text-align: right;
+    display: flex;
+    flex-direction: column;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.receipt-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid #eee;
+}
+
+.receipt-section h4 {
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #999;
+    margin-bottom: 0.8rem;
+}
+
+.receipt-section p {
+    font-size: 0.95rem;
+    margin-bottom: 0.3rem;
+    color: #000;
+}
+
+.payment-status {
+    color: #008000 !important;
+    font-weight: 500;
+    margin-top: 0.5rem;
+}
+
+/* Receipt Items */
+.receipt-items {
+    margin-bottom: 2rem;
+}
+
+.receipt-item-row {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+    border-bottom: 1px solid #f5f5f5;
+}
+
+.r-item-img {
+    width: 50px;
+    height: 50px;
+    background: #f0f0f0;
+    margin-right: 1.5rem;
+}
+
+.r-item-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.r-item-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.r-item-details strong {
+    font-size: 0.95rem;
+    margin-bottom: 0.2rem;
+}
+
+.r-item-details span {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.r-item-price {
+    font-weight: 500;
+}
+
+/* Receipt Totals */
+.receipt-totals {
+    width: 50%;
+    margin-left: auto;
+}
+
+.r-total-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.r-total-row.final {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px solid #000;
+    color: #000;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.receipt-footer {
+    margin-top: 3rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    color: #888;
+    font-size: 0.9rem;
+}
+
+.download-btn {
+    background: transparent;
+    border: 1px solid #ddd;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #333;
+}
+
+.download-btn:hover {
+    border-color: #000;
+    color: #000;
+}
+
+.continue-btn-large {
+    background: #000;
+    color: #fff;
+    border: none;
+    padding: 1rem 3rem;
+    font-size: 1rem;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+}
+
+.continue-btn-large:hover {
+    background: #333;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+    .checkout-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .checkout-right {
+        order: -1;
+    }
+
+    .receipt-body {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+
+    .receipt-totals {
+        width: 100%;
+    }
+}
+
+.checkout-empty,
+.checkout-success {
+    text-align: center;
+    padding: 4rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.success-icon {
+    width: 60px;
+    height: 60px;
+    background: #008000;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin: 0 auto 1.5rem;
+}
+
+.continue-btn {
+    background: #000;
+    color: #fff;
+    padding: 0.8rem 2rem;
+    border: none;
+    margin-top: 2rem;
+    cursor: pointer;
+}

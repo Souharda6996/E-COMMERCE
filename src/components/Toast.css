@@ -1,0 +1,64 @@
+/* ─── Toast Notification ─── */
+.cart-toast {
+    position: fixed;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: #000000;
+    color: #ffffff;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    z-index: 3000;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cart-toast.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.toast-icon {
+    font-size: 1.1rem;
+}
+
+.toast-message {
+    white-space: nowrap;
+}
+
+/* ─── Cart Icon Pulse ─── */
+@keyframes pulse-cart {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.2);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.cart-icon-wrapper.pulse svg {
+    animation: pulse-cart 0.4s ease;
+}
+
+/* ─── Mobile Adjustment ─── */
+@media (max-width: 480px) {
+    .cart-toast {
+        bottom: 1.5rem;
+        width: 90%;
+        justify-content: center;
+    }
+}
